@@ -1,0 +1,11 @@
+set ignorecase
+set incsearch
+set scrolloff=4
+set smartcase
+set syscalls
+
+colorscheme juef-zenburn default
+
+filetype * start, explorer
+
+" vim: ft=vim
