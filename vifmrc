@@ -7,5 +7,6 @@ set syscalls
 
 filetype * start, cmd /c
 colorscheme juef-zenburn default
+command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
 
 " vim: ft=vim
