@@ -5,8 +5,7 @@ set scrolloff=4
 set smartcase
 set syscalls
 
+filetype * start, cmd /c
 colorscheme juef-zenburn default
-
-filetype * start, explorer
 
 " vim: ft=vim
