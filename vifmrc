@@ -1,5 +1,6 @@
 set ignorecase
 set incsearch
+set rnu
 set scrolloff=4
 set smartcase
 set syscalls
