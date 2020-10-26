@@ -9,10 +9,11 @@ view
 only
 
 filetype * start, explorer
-command! run :!cmd //k %c
-command! open :!explorer %d:gs;/;\\;
+command! run :!cmd //k %"c
+command! open :!explorer %"d:gs;/;\\;
 command! config :!gvim ~/.vifm/vifmrc&
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
+command! cmder :!/d/minieyes_chen/software/cmder/Cmder.exe //task "bash::bash as Admin" //start %"d:gs;/;\\;
 
 nnoremap e :!gvim %c&<cr>
 nnoremap <F5> :restart<cr>
