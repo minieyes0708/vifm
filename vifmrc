@@ -6,21 +6,34 @@ set smartcase
 set syscalls
 
 view
-fileview * preview
-filetype * start, cmd /c
-colorscheme juef-zenburn default
+only
+
+filetype * start, explorer
+command! run :!cmd //k %c
+command! open :!explorer %d:gs;/;\\;
+command! config :!gvim ~/.vifm/vifmrc&
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
 
+nnoremap e :!gvim %c&<cr>
+nnoremap <F5> :restart<cr>
+
+nnoremap vq :only<cr>
+nnoremap vv :vsplit<cr>
+
+nnoremap gb :bmarks<cr>
+nnoremap gv :volumes<cr>
+nnoremap gh :cd $HOME<cr>
+
 " yank current directory path to Windows clipboard with forward slashes
-nnoremap yp :!echo %"d:gs!\!/! %i | clip<cr>
+nnoremap yp :!echo -n %"d:gs!\!/! %i | clip<cr>
 " yank current directory path to Windows clipboard with backward slashes
-nnoremap yP :!echo %"d %i | clip<cr>
+nnoremap yP :!echo -n %"d %i | clip<cr>
 " yank path to current file to Windows clipboard with forward slashes
-nnoremap yf :!echo %"c:gs!\!/! %i | clip<cr>
+nnoremap yf :!echo -n %"c:gs!\!/! %i | clip<cr>
 " yank path to current directory to Windows clipboard with backward slashes
-nnoremap yF :!echo %"c %i | clip<cr>
+nnoremap yF :!echo -n %"c %i | clip<cr>
 " yank current filename without path to Windows clipboard
-nnoremap yn :!echo %"c %i | clip<cr>
+nnoremap yn :!echo -n %"c %i | clip<cr>
 " yank root of current file's name to Windows clipboard
 nnoremap yr :!echo -n %c:r | clip<cr>
 
