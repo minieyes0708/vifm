@@ -23,6 +23,7 @@ nnoremap vv :vsplit<cr>
 nnoremap gb :bmarks<cr>
 nnoremap gv :volumes<cr>
 nnoremap gh :cd $HOME<cr>
+nnoremap gp :cd D:/minieyes_chen/program<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
 nnoremap yp :!echo -n %"d:gs!\!/! %i | clip<cr>
