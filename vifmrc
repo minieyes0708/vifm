@@ -9,11 +9,11 @@ view
 only
 
 filetype * start, explorer
-command! run :!cmd //k %"c
+command! run :!START "" cmd //c %"c
 command! open :!explorer %"d:gs;/;\\;
 command! config :!gvim ~/.vifm/vifmrc&
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
-command! cmder :!/d/minieyes_chen/software/cmder/Cmder.exe //task "bash::bash as Admin" //start %"d:gs;/;\\;
+command! cmder :!cmder //task "bash::bash as Admin" //start %"d
 
 nnoremap e :!gvim %c&<cr>
 nnoremap <F5> :restart<cr>
@@ -27,16 +27,16 @@ nnoremap gh :cd $HOME<cr>
 nnoremap gp :cd D:/minieyes_chen/program<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
-nnoremap yp :!echo -n %"d:gs!\!/! %i | clip<cr>
+nnoremap yp :!echo -n %"d:gs!\!/! %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>
 " yank current directory path to Windows clipboard with backward slashes
-nnoremap yP :!echo -n %"d %i | clip<cr>
+nnoremap yP :!echo -n %"d %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>
 " yank path to current file to Windows clipboard with forward slashes
-nnoremap yf :!echo -n %"c:gs!\!/! %i | clip<cr>
+nnoremap yf :!echo -n %"c:gs!\!/! %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>
 " yank path to current directory to Windows clipboard with backward slashes
-nnoremap yF :!echo -n %"c %i | clip<cr>
+nnoremap yF :!echo -n %"c %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>
 " yank current filename without path to Windows clipboard
-nnoremap yn :!echo -n %"c %i | clip<cr>
+nnoremap yn :!echo -n %"c %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>
 " yank root of current file's name to Windows clipboard
-nnoremap yr :!echo -n %c:r | clip<cr>
+nnoremap yr :!echo -n %c:r | iconv.exe -f UTF-8 -t CP950 | clip<cr>
 
 " vim: ft=vim
