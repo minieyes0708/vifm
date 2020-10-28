@@ -30,6 +30,7 @@ if [[ "${decision}" == "git diff" ]]; then
 elif [[ "${decision}" == "git commit" ]]; then
 	TortoiseGitProc.exe -command commit
 elif [[ "${decision}" == "open config file" ]]; then
+	cd ~/.vifm
 	gvim ~/.vifm/vifmrc&
 elif [[ "${decision}" == "run current file with cmd" ]]; then
 	START "" cmd //c "${curfile}"
