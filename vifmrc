@@ -1,9 +1,9 @@
-set ignorecase
-set incsearch
 set rnu
-set scrolloff=4
-set smartcase
 set syscalls
+set smartcase
+set incsearch
+set ignorecase
+set scrolloff=4
 set viewcolumns=*{name}..,16{mtime},7{}.
 
 view
