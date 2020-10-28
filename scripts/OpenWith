@@ -17,7 +17,7 @@ options=(
 )
 
 decision=$(
-	local IFS=$'\n'
+	IFS=$'\n'
 	{
 		for opt in "${options[@]}"; do
 			echo "${opt}"
