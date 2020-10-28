@@ -5,6 +5,8 @@ curfile="$2"
 
 IFS=:
 options=(
+	"git diff"
+	"git commit"
 	"open config file"
 	"run current file with cmd"
 	"open current file with gvim"
@@ -23,7 +25,11 @@ decision=$(
 	} | fzf
 )
 
-if [[ "${decision}" == "open config file" ]]; then
+if [[ "${decision}" == "git diff" ]]; then
+	TortoiseGitProc.exe -command diff
+elif [[ "${decision}" == "git commit" ]]; then
+	TortoiseGitProc.exe -command commit
+elif [[ "${decision}" == "open config file" ]]; then
 	gvim ~/.vifm/vifmrc&
 elif [[ "${decision}" == "run current file with cmd" ]]; then
 	START "" cmd //c "${curfile}"
