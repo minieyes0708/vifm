@@ -4,6 +4,7 @@ set rnu
 set scrolloff=4
 set smartcase
 set syscalls
+set viewcolumns=*{name}..,16{mtime},7{}.
 
 view
 only
