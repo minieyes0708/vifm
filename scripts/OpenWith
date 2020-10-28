@@ -1,0 +1,42 @@
+#/bin/bash
+
+curdir="$1"
+curfile="$2"
+
+IFS=:
+options=(
+	"open config file"
+	"run current file with cmd"
+	"open current file with gvim"
+	"open current file with explorer"
+	"open current directory with gvim"
+	"open current directory with cmder"
+	"open current directory with explorer"
+)
+
+decision=$(
+	local IFS=$'\n'
+	{
+		for opt in "${options[@]}"; do
+			echo "${opt}"
+		done
+	} | fzf
+)
+
+if [[ "${decision}" == "open config file" ]]; then
+	gvim ~/.vifm/vifmrc&
+elif [[ "${decision}" == "run current file with cmd" ]]; then
+	START "" cmd //c "${curfile}"
+elif [[ "${decision}" == "open current file with gvim" ]]; then
+	gvim "${curfile}"&
+elif [[ "${decision}" == "open current file with explorer" ]]; then
+	explorer "${curfile}"
+elif [[ "${decision}" == "open current directory with gvim" ]]; then
+	gvim "${curdir}"&
+elif [[ "${decision}" == "open current directory with cmder" ]]; then
+	cmder //task "bash::bash as Admin" //start "${curdir}"
+elif [[ "${decision}" == "open current directory with explorer" ]]; then
+	explorer "${curdir}"
+fi
+
+# vim: ft=bash
