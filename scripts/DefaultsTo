@@ -1,9 +1,9 @@
 #/bin/bash
 
-selection=$(cat ~/.vifm/user/bookmarks.txt | fzf)
+read selection
 
 if [[ -z "$selection" ]]; then
-	echo "."
+	echo "$1"
 else
 	echo "$selection"
 fi
