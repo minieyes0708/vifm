@@ -31,9 +31,9 @@ nnoremap gl :execute 'cd'
 nnoremap g1/ :execute 'cd'
 			\ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
 nnoremap g2/ :execute 'cd'
-			\ fnameescape(term('fd --type d --max-depth 2 --hidden | fzf | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d --max-depth 2 --hidden | sed -e s,\\,/,g | fzf | bash DefaultsTo .'))<cr>
 nnoremap g3/ :execute 'cd'
-			\ fnameescape(term('fd --type d --max-depth 3 --hidden | fzf | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d --max-depth 3 --hidden | sed -e s,\\,/,g | fzf | bash DefaultsTo .'))<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
 nnoremap yp :!echo -n %"d:gs!\!/! %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>
