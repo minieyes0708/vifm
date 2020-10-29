@@ -1,5 +1,6 @@
 set rnu
 set syscalls
+set dotfiles
 set smartcase
 set incsearch
 set ignorecase
