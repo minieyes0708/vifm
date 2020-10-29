@@ -1,9 +1,9 @@
-set ignorecase
-set incsearch
 set rnu
-set scrolloff=4
-set smartcase
 set syscalls
+set smartcase
+set incsearch
+set ignorecase
+set scrolloff=4
 set viewcolumns=*{name}..,16{mtime},7{}.
 
 view
@@ -14,15 +14,15 @@ command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
 
 nnoremap e :!gvim %c&<cr>
 nnoremap <F5> :restart<cr>
-nnoremap <space><space> :!~/.vifm/scripts/OpenWith %d %c<cr>
+nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %d %c<cr>
 
 nnoremap vq :only<cr>
 nnoremap vv :vsplit<cr>
 
-nnoremap gb :bmarks<cr>
 nnoremap gv :volumes<cr>
 nnoremap gh :cd $HOME<cr>
-nnoremap gp :cd D:/minieyes_chen/program<cr>
+nnoremap gb :execute 'cd'
+			\ fnameescape(term('bash ~/.vifm/scripts/SelectBookmark'))<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
 nnoremap yp :!echo -n %"d:gs!\!/! %i | iconv.exe -f UTF-8 -t CP950 | clip<cr>

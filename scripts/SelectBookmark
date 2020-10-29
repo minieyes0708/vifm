@@ -1,0 +1,11 @@
+#/bin/bash
+
+selection=$(cat ~/.vifm/user/bookmarks.txt | fzf)
+
+if [[ -z "$selection" ]]; then
+	echo "."
+else
+	echo "$selection"
+fi
+
+# vim: ft=bash
