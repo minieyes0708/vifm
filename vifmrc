@@ -25,6 +25,8 @@ nnoremap gb :execute 'cd'
 			\ fnameescape(term('cat ~/.vifm/user/bookmarks.txt | fzf | bash DefaultsTo .'))<cr>
 nnoremap g/ :execute 'cd'
 			\ fnameescape(term('fd --type d | fzf | bash DefaultsTo .'))<cr>
+nnoremap gl :execute 'cd'
+			\ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
 nnoremap g1/ :execute 'cd'
 			\ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
 nnoremap g2/ :execute 'cd'
