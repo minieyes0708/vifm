@@ -11,6 +11,7 @@ options=(
 	"run current file with cmd"
 	"open current file with gvim"
 	"open current file with explorer"
+	"open current directory with 7zip"
 	"open current directory with gvim"
 	"open current directory with cmder"
 	"open current directory with explorer"
@@ -38,6 +39,8 @@ elif [[ "${decision}" == "open current file with gvim" ]]; then
 	gvim "${curfile}"&
 elif [[ "${decision}" == "open current file with explorer" ]]; then
 	explorer "${curfile}"
+elif [[ "${decision}" == "open current directory with 7zip" ]]; then
+	"/c/Program Files/7-zip/7zFM.exe" "${curdir}"&
 elif [[ "${decision}" == "open current directory with gvim" ]]; then
 	gvim "${curdir}"&
 elif [[ "${decision}" == "open current directory with cmder" ]]; then
