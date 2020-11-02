@@ -13,9 +13,10 @@ only
 filetype * start, explorer
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
 
-nnoremap e :!gvim %c&<cr>
+nnoremap e :!gvim %"c&<cr>
+nnoremap E :!gvim %"d&<cr>
 nnoremap <F5> :restart<cr>
-nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %d %c<cr>
+nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c<cr>
 
 nnoremap vq :only<cr>
 nnoremap vv :vsplit<cr>
