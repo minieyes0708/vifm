@@ -23,6 +23,7 @@ nnoremap vv :vsplit<cr>
 
 nnoremap gv :volumes<cr>
 nnoremap gh :cd $HOME<cr>
+nnoremap gd :cd $HOME/Desktop<cr>
 nnoremap gb :execute 'cd'
 			\ fnameescape(term('cat ~/.vifm/user/bookmarks.txt | fzf | bash DefaultsTo .'))<cr>
 nnoremap g/ :execute 'cd'
