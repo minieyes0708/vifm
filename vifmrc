@@ -11,6 +11,7 @@ view
 only
 
 filetype * start, explorer
+command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
 
 nnoremap e :!gvim %"c&<cr>
