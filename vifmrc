@@ -7,8 +7,8 @@ set ignorecase
 set scrolloff=4
 set viewcolumns=*{name}..,16{mtime},7{}.
 
-view
-only
+" view
+" only
 
 filetype * start, explorer
 command! bash :!MAIN_BASH_DONE= bash
