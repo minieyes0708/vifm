@@ -12,6 +12,9 @@ only
 
 filetype * start, explorer
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
+command! config :!cd ~/.vifm && gvim ~/.vifm/vifmrc&
+command! bash :!cd %"d && MAIN_BASH_DONE= bash
+command! diff :!gvim -d %"f&
 
 nnoremap e :!gvim %"c&<cr>
 nnoremap E :!gvim %"d&<cr>
