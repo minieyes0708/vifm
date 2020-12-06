@@ -10,6 +10,7 @@ options=(
 	"open config file"
 	"run current file with cmd"
 	"open current file with gvim"
+	"open current file with chrome"
 	"open current file with explorer"
 	"open current directory with 7zip"
 	"open current directory with gvim"
@@ -37,6 +38,8 @@ elif [[ "${decision}" == "run current file with cmd" ]]; then
 	START "" cmd //c "${curfile}"
 elif [[ "${decision}" == "open current file with gvim" ]]; then
 	gvim "${curfile}"&
+elif [[ "${decision}" == "open current file with chrome" ]]; then
+	C:/Program\ Files/Google/Chrome/Application/chrome.exe "${curfile}"
 elif [[ "${decision}" == "open current file with explorer" ]]; then
 	explorer "${curfile}"
 elif [[ "${decision}" == "open current directory with 7zip" ]]; then
