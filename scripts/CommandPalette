@@ -5,10 +5,12 @@ curfile="$2"
 
 IFS=:
 options=(
+	"md5sum"
 	"git log"
 	"git diff"
 	"git pull"
 	"git commit"
+	"git revert"
 	"svn diff"
 	"svn pull"
 	"svn update"
@@ -33,7 +35,12 @@ decision=$(
 	} | fzf
 )
 
-if [[ "${decision}" == "git log" ]]; then
+if [[ "${decision}" == "md5sum" ]]; then
+    IFS=' '
+    shift; shift;
+    md5sum $*
+    read
+elif [[ "${decision}" == "git log" ]]; then
 	TortoiseGitProc.exe -command log&
 elif [[ "${decision}" == "git diff" ]]; then
 	TortoiseGitProc.exe -command diff&
@@ -41,6 +48,8 @@ elif [[ "${decision}" == "git pull" ]]; then
 	TortoiseGitProc.exe -command pull&
 elif [[ "${decision}" == "git commit" ]]; then
 	TortoiseGitProc.exe -command commit&
+elif [[ "${decision}" == "git revert" ]]; then
+	TortoiseGitProc.exe -command revert&
 elif [[ "${decision}" == "svn diff" ]]; then
 	TortoiseProc.exe -path "${curdir}" -command:diff&
 elif [[ "${decision}" == "svn pull" ]]; then

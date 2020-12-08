@@ -21,7 +21,7 @@ nnoremap e :!gvim %"c&<cr>
 nnoremap E :!gvim %"d&<cr>
 nnoremap w :!explorer %"d&<cr>
 nnoremap <F5> :restart<cr>
-nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c<cr>
+nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
 
 nnoremap vq :only<cr>
 nnoremap vv :vsplit<cr>
