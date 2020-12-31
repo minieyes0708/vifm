@@ -3,9 +3,9 @@
 read selection
 
 if [[ -z "$selection" ]]; then
-	echo "$1"
+	echo -n "$1" | tr -d '\r'
 else
-	echo "$selection"
+	echo -n "$selection" | tr -d '\r'
 fi
 
 # vim: ft=bash
