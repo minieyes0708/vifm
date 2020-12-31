@@ -5,35 +5,36 @@ curfile="$2"
 
 IFS=:
 options=(
-	"md5sum"
-	"git log"
-	"git diff"
-	"git pull"
-	"git commit"
-	"git revert"
-	"svn diff"
-	"svn pull"
-	"svn update"
-	"svn commit"
-	"open config file"
-	"START current file"
-	"run current file with cmd"
-	"open current file with gvim"
-	"open current file with chrome"
-	"open current file with explorer"
-	"open current directory with 7zip"
-	"open current directory with gvim"
-	"open current directory with cmder"
-	"open current directory with explorer"
+    "md5sum"
+    "git log"
+    "git diff"
+    "git pull"
+    "git commit"
+    "git revert"
+    "svn diff"
+    "svn pull"
+    "svn update"
+    "svn commit"
+    "open config file"
+    "START current file"
+    "run current file with cmd"
+    "open current file with gvim"
+    "open current file with excel"
+    "open current file with chrome"
+    "open current file with explorer"
+    "open current directory with 7zip"
+    "open current directory with gvim"
+    "open current directory with cmder"
+    "open current directory with explorer"
 )
 
 decision=$(
-	IFS=$'\n'
-	{
-		for opt in "${options[@]}"; do
-			echo "${opt}"
-		done
-	} | fzf
+    IFS=$'\n'
+    {
+        for opt in "${options[@]}"; do
+            echo "${opt}"
+        done
+    } | fzy
 )
 
 if [[ "${decision}" == "md5sum" ]]; then
@@ -42,44 +43,49 @@ if [[ "${decision}" == "md5sum" ]]; then
     md5sum $*
     read
 elif [[ "${decision}" == "git log" ]]; then
-	TortoiseGitProc.exe -command log&
+    TortoiseGitProc.exe -command log&
 elif [[ "${decision}" == "git diff" ]]; then
-	TortoiseGitProc.exe -command diff&
+    TortoiseGitProc.exe -command diff&
 elif [[ "${decision}" == "git pull" ]]; then
-	TortoiseGitProc.exe -command pull&
+    TortoiseGitProc.exe -command pull&
 elif [[ "${decision}" == "git commit" ]]; then
-	TortoiseGitProc.exe -command commit&
+    TortoiseGitProc.exe -command commit&
 elif [[ "${decision}" == "git revert" ]]; then
-	TortoiseGitProc.exe -command revert&
+    TortoiseGitProc.exe -command revert&
 elif [[ "${decision}" == "svn diff" ]]; then
-	TortoiseProc.exe -path "${curdir}" -command:diff&
+    TortoiseProc.exe -path "${curdir}" -command:diff&
 elif [[ "${decision}" == "svn pull" ]]; then
-	TortoiseProc.exe -path "${curdir}" -command:pull&
+    TortoiseProc.exe -path "${curdir}" -command:pull&
 elif [[ "${decision}" == "svn update" ]]; then
-	TortoiseProc.exe -path "${curdir}" -command:update&
+    TortoiseProc.exe -path "${curdir}" -command:update&
 elif [[ "${decision}" == "svn commit" ]]; then
-	TortoiseProc.exe -path "${curdir}" -command:commit&
+    TortoiseProc.exe -path "${curdir}" -command:commit&
 elif [[ "${decision}" == "open config file" ]]; then
-	cd ~/.vifm
-	gvim ~/.vifm/vifmrc&
+    cd ~/.vifm
+    gvim ~/.vifm/vifmrc&
 elif [[ "${decision}" == "START current file" ]]; then
-	START "" "${curfile}"
+    START "" "${curfile}"
 elif [[ "${decision}" == "run current file with cmd" ]]; then
-	START "" cmd //c "${curfile}"
+    START "" cmd //c "${curfile}"
 elif [[ "${decision}" == "open current file with gvim" ]]; then
-	gvim "${curfile}"&
+    gvim "${curfile}"&
+elif [[ "${decision}" == "open current file with excel" ]]; then
+    shift; shift;
+    for var in "$@"; do
+        C:/Program\ Files\ \(x86\)/Microsoft\ Office/Office16/EXCEL.EXE "$(realpath $var)"&
+    done
 elif [[ "${decision}" == "open current file with chrome" ]]; then
-	C:/Program\ Files/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
+    C:/Program\ Files/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
 elif [[ "${decision}" == "open current file with explorer" ]]; then
     explorer "${curfile}"
 elif [[ "${decision}" == "open current directory with 7zip" ]]; then
-	"/c/Program Files/7-zip/7zFM.exe" "${curdir}"&
+    "/c/Program Files/7-zip/7zFM.exe" "${curdir}"&
 elif [[ "${decision}" == "open current directory with gvim" ]]; then
-	gvim "${curdir}"&
+    gvim "${curdir}"&
 elif [[ "${decision}" == "open current directory with cmder" ]]; then
-	cmder //task "bash::bash as Admin" //start "${curdir}"
+    cmder //task "bash::bash as Admin" //start "${curdir}"
 elif [[ "${decision}" == "open current directory with explorer" ]]; then
-	explorer "${curdir}"
+    explorer "${curdir}"
 fi
 
 # vim: ft=bash
