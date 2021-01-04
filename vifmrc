@@ -21,7 +21,7 @@ command! diff :!gvim -d %"f&
 
 nnoremap e :!gvim %"c&<cr>
 nnoremap E :!gvim&<cr>
-nnoremap w :!explorer %"d&<cr>
+nnoremap w :!explorer .&<cr>
 nnoremap <F5> :restart<cr>
 nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
 
@@ -38,7 +38,7 @@ nnoremap g/ :execute 'cd'
 nnoremap gl :execute 'cd'
 			\ fnameescape(term('fd --type d --max-depth 1 --hidden | fzy | bash DefaultsTo .'))<cr>
 nnoremap g1/ :execute 'cd'
-			\ fnameescape(term('fd --type d --max-depth 1 --hidden  | sed -e s,\\,/,g| fzy | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d --max-depth 1 --hidden | sed -e s,\\,/,g | fzy | bash DefaultsTo .'))<cr>
 nnoremap g2/ :execute 'cd'
 			\ fnameescape(term('fd --type d --max-depth 2 --hidden | sed -e s,\\,/,g | fzy | bash DefaultsTo .'))<cr>
 nnoremap g3/ :execute 'cd'
