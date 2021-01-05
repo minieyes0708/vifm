@@ -45,16 +45,16 @@ nnoremap g3/ :execute 'cd'
 			\ fnameescape(term('fd --type d --max-depth 3 --hidden | sed -e s,\\,/,g | fzy | bash DefaultsTo .'))<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
-nnoremap yp :!echo -n %"d:gs!\!/! %i | clip<cr>
+nnoremap yp :!cygpath -w %"d | sed -e 's!\\!/!g' | clip<cr>
 " yank current directory path to Windows clipboard with backward slashes
-nnoremap yP :!echo -n %"d %i | clip<cr>
+nnoremap yP :!cygpath -w %"d | clip<cr>
 " yank path to current file to Windows clipboard with forward slashes
-nnoremap yf :!echo -n %"c:gs!\!/! %i | clip<cr>
+nnoremap yf :!cygpath -w %"d\\%"c | sed -e 's!\\!/!g' | clip<cr>
 " yank path to current directory to Windows clipboard with backward slashes
-nnoremap yF :!echo -n %"c %i | clip<cr>
+nnoremap yF :!cygpath -w %"d\\%"c | clip<cr>
 " yank current filename without path to Windows clipboard
-nnoremap yn :!echo -n %"d\\%"c %i | clip<cr>
+nnoremap yn :!cygpath -w %"c | clip<cr>
 " yank root of current file's name to Windows clipboard
-nnoremap yr :!echo -n %c:r | clip<cr>
+nnoremap yr :!cygpath -w %c:r | clip<cr>
 
 " vim: ft=vim
