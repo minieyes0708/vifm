@@ -7,6 +7,7 @@ IFS=:
 options=(
     "md5sum"
     "git log"
+    "git log on current file"
     "git diff"
     "git pull"
     "git commit"
@@ -44,6 +45,8 @@ if [[ "${decision}" == "md5sum" ]]; then
     read
 elif [[ "${decision}" == "git log" ]]; then
     TortoiseGitProc.exe -command log&
+elif [[ "${decision}" == "git log on current file" ]]; then
+    TortoiseGitProc.exe -command log -path "${curfile}"&
 elif [[ "${decision}" == "git diff" ]]; then
     TortoiseGitProc.exe -command diff&
 elif [[ "${decision}" == "git pull" ]]; then
