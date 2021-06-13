@@ -17,9 +17,11 @@ filetype *.csv,*.xls,*.xlsx start, excel
 
 command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
-command! config :!cd ~/.vifm && gvim ~/.vifm/vifmrc&
+command! config :!cd ~/.vifm && gvim ~/.vifm/vifmrc &
 command! bash :!cd %"d && MAIN_BASH_DONE= bash
-command! diff :!gvim -d %"f&
+command! diff :!gvim -d %"f &
+command! code :!code . &
+command! sublime :!"/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" .&<cr>
 
 nnoremap e :!gvim %"c&<cr>
 nnoremap E :!gvim&<cr>
