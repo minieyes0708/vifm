@@ -12,8 +12,18 @@ source ~/.vifm/user/env.vifm
 " view
 " only
 
-filetype * start, explorer
-filetype *.csv,*.xls,*.xlsx start, excel
+filetype *
+            \ {explorer} explorer &,
+            \ {code} code &,
+            \ {gvim} gvim &,
+            \ {excel} "/c/Program Files (x86)/Microsoft Office/Office16/EXCEL.EXE" &,
+            \ {sublime} "/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" &,
+filetype .*
+            \ {explorer} explorer &,
+            \ {code} code &,
+            \ {gvim} gvim &,
+            \ {excel} "/c/Program Files (x86)/Microsoft Office/Office16/EXCEL.EXE" &,
+            \ {sublime} "/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" &,
 
 command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
