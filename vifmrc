@@ -12,17 +12,29 @@ source ~/.vifm/user/env.vifm
 " view
 " only
 
-filetype * start, explorer
-filetype *.csv,*.xls,*.xlsx start, excel
+filetype *
+            \ {explorer} explorer &,
+            \ {code} code &,
+            \ {gvim} gvim &,
+            \ {excel} "/c/Program Files (x86)/Microsoft Office/Office16/EXCEL.EXE" &,
+            \ {sublime} "/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" &,
+filetype .*
+            \ {explorer} explorer &,
+            \ {code} code &,
+            \ {gvim} gvim &,
+            \ {excel} "/c/Program Files (x86)/Microsoft Office/Office16/EXCEL.EXE" &,
+            \ {sublime} "/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" &,
 
 command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
-command! config :!cd ~/.vifm && gvim ~/.vifm/vifmrc&
+command! config :!cd ~/.vifm && gvim ~/.vifm/vifmrc &
 command! bash :!cd %"d && MAIN_BASH_DONE= bash
-command! diff :!gvim -d %"f&
+command! diff :!gvim -d %"f &
+command! code :!code . &
+command! sublime :!"/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" .&<cr>
 
-nnoremap e :!gvim %"c&<cr>
-nnoremap E :!gvim&<cr>
+nnoremap ,E :!gvim&<cr>
+nnoremap ,e :!gvim %"f&<cr>
 nnoremap w :!explorer .&<cr>
 nnoremap <F5> :restart<cr>
 nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
@@ -31,8 +43,10 @@ nnoremap vq :only<cr>
 nnoremap vv :vsplit<cr>
 
 nnoremap gv :volumes<cr>
-nnoremap gh :cd $HOME<cr>
-nnoremap gd :cd $HOME/Desktop<cr>
+nnoremap gh :cd /c/Users/nvt02863<cr>
+" nnoremap gh :cd $HOME<cr>
+nnoremap gd :cd /c/Users/nvt02863/Desktop<cr>
+" nnoremap gd :cd $HOME/Desktop<cr>
 nnoremap gb :execute 'cd'
 			\ fnameescape(term('cat ~/.vifm/user/bookmarks.txt | fzy | bash DefaultsTo .'))<cr>
 nnoremap g/ :execute 'cd'
