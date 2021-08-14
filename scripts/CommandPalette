@@ -34,7 +34,7 @@ decision=$(
         for opt in "${options[@]}"; do
             echo "${opt}"
         done
-    } | fzy
+    } | fzf
 )
 
 if [[ "${decision}" == "md5sum" ]]; then
