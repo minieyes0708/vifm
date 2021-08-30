@@ -17,20 +17,20 @@ filetype *.csv,*.xls,*.xlsx start, excel
 
 command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
-command! config :!cd ~/.vifm && nvim-qt ~/.vifm/vifmrc&
+command! config :!cd ~/.vifm && py -m tools.mynvr ~/.vifm/vifmrc&
 command! bash :!cd %"d && MAIN_BASH_DONE= bash
-command! diff :!nvim-qt -d %"f&
+command! diff :!py -m tools.mynvr -d %"f&
 
-nnoremap e :!nvim-qt %"c&<cr>
-nnoremap E :!nvim-qt&<cr>
+nnoremap ,e :!py -m tools.mynvr %"c&<cr>
+nnoremap ,E :!py -m tools.mynvr .&<cr>
 nnoremap w :!explorer .&<cr>
 nnoremap <F5> :restart<cr>
 nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
 
 nnoremap <space>es :!"C:\Program Files\Sublime Text 3\sublime_text.exe" %"c&<cr>
 nnoremap <space>ws :!"C:\Program Files\Sublime Text 3\sublime_text.exe" .&<cr>
-nnoremap <space>ev :!nvim-qt -u NONE %"c&<cr>
-nnoremap <space>wv :!nvim-qt -u NONE .&<cr>
+nnoremap <space>ev :!py -m tools.mynvr -u NONE %"c&<cr>
+nnoremap <space>wv :!py -m tools.mynvr -u NONE .&<cr>
 nnoremap <space>ec :!code %"c&<cr>
 nnoremap <space>wc :!code .&<cr>
 
