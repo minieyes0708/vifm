@@ -8,6 +8,7 @@ options=(
     "md5sum"
     "nothing"
     "extract with 7zip"
+    "decrypt with blowfish"
 
     "git log"
     "git diff"
@@ -58,6 +59,10 @@ elif [[ "${decision}" == "nothing" ]]; then
     echo do nothing
 elif [[ "${decision}" == "extract with 7zip" ]]; then
     C:\\Program\ Files\\7-Zip\\7z.exe x "${curfile}" -o${curfile%.*}
+elif [[ "${decision}" == "decrypt with blowfish" ]]; then
+    echo -n 'Please input Key: '
+    read key
+    BlowFish "$key" -d "${curfile}" "${curfile}.decrypted"
 elif [[ "${decision}" == "git log" ]]; then
     TortoiseGitProc.exe -command log&
 elif [[ "${decision}" == "git diff" ]]; then
