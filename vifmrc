@@ -27,14 +27,14 @@ filetype .*
 
 command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
-command! config :!cd ~/.vifm && gvim ~/.vifm/vifmrc &
+command! config :!cd ~/.vifm && /d/minieyes_chen/software/Neovim/bin/nvim-qt.exe ~/.vifm/vifmrc &
 command! bash :!cd %"d && MAIN_BASH_DONE= bash
-command! diff :!gvim -d %"f &
+command! diff :!/d/minieyes_chen/software/Neovim/bin/nvim-qt.exe -d %"f &
 command! code :!code . &
 command! sublime :!"/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" .&<cr>
 
-nnoremap ,E :!gvim&<cr>
-nnoremap ,e :!gvim %"f&<cr>
+nnoremap ,E :!/d/minieyes_chen/software/Neovim/bin/nvim-qt.exe .&<cr>
+nnoremap ,e :!/d/minieyes_chen/software/Neovim/bin/nvim-qt.exe %"f&<cr>
 nnoremap w :!explorer .&<cr>
 nnoremap <F5> :restart<cr>
 nnoremap <space><space> :!~/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
