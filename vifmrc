@@ -19,13 +19,13 @@ filetype * start, explorer
 
 command! bash :!MAIN_BASH_DONE= bash
 command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
-command! config :!cd ~/.vifm && py -m tools.mynvr ~/.vifm/vifmrc&
+command! config :!cd ~/.vifm && py -m tools.mynvr ~/.vifm/vifmrc
 command! bash :!cd %"d && MAIN_BASH_DONE= bash
-command! diff :!py -m tools.mynvr -d %"f&
+command! diff :!py -m tools.mynvr -d %"f
 
-nnoremap ,e :!nvr -l %"c&<cr>
-nnoremap ,E :!nvr -l .&<cr>
-nnoremap w :!explorer .&<cr>
+nnoremap ,e :!nvr -l %"c<cr>
+nnoremap ,E :!nvr -l .<cr>
+nnoremap w :!explorer .<cr>
 nnoremap <F5> :restart<cr>
 nnoremap <space><space> :!bash $env:USERPROFILE/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
 
