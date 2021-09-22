@@ -5,6 +5,7 @@ set smartcase
 set incsearch
 set ignorecase
 set scrolloff=4
+set shell=powershell
 set viewcolumns=*{name}..,16{mtime},7{}.
 
 source ~/.vifm/user/env.vifm
@@ -26,14 +27,7 @@ nnoremap ,e :!nvr -l %"c&<cr>
 nnoremap ,E :!nvr -l .&<cr>
 nnoremap w :!explorer .&<cr>
 nnoremap <F5> :restart<cr>
-nnoremap <space><space> :!bash C:/Users/chenv/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
-
-nnoremap <space>es :!"C:\Program Files\Sublime Text 3\sublime_text.exe" %"c&<cr>
-nnoremap <space>ws :!"C:\Program Files\Sublime Text 3\sublime_text.exe" .&<cr>
-nnoremap <space>ev :!py -m tools.mynvr -u NONE %"c&<cr>
-nnoremap <space>wv :!py -m tools.mynvr -u NONE .&<cr>
-nnoremap <space>ec :!code %"c&<cr>
-nnoremap <space>wc :!code .&<cr>
+nnoremap <space><space> :!bash $env:USERPROFILE/.vifm/scripts/CommandPalette %"d %"c %"f<cr>
 
 nnoremap vq :only<cr>
 nnoremap vv :vsplit<cr>
@@ -44,27 +38,27 @@ nnoremap gd :cd $HOME/OneDrive/桌面<cr>
 nnoremap gb :execute 'cd'
 			\ fnameescape(term('cat %USERPROFILE%/.vifm/user/bookmarks.txt | fzf'))<cr>
 nnoremap g/ :execute 'cd'
-			\ fnameescape(term('fd --type d | sed -e s,\\,/,g | fzf | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d | fzf | bash DefaultsTo .'))<cr>
 nnoremap gl :execute 'cd'
 			\ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
 nnoremap g1/ :execute 'cd'
-			\ fnameescape(term('fd --type d --max-depth 1 --hidden | sed -e s,\\,/,g | fzf | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
 nnoremap g2/ :execute 'cd'
-			\ fnameescape(term('fd --type d --max-depth 2 --hidden | sed -e s,\\,/,g | fzf | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d --max-depth 2 --hidden | fzf | bash DefaultsTo .'))<cr>
 nnoremap g3/ :execute 'cd'
-			\ fnameescape(term('fd --type d --max-depth 3 --hidden | sed -e s,\\,/,g | fzf | bash DefaultsTo .'))<cr>
+			\ fnameescape(term('fd --type d --max-depth 3 --hidden | fzf | bash DefaultsTo .'))<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
-nnoremap yp :!cygpath -w %"d | sed -e 's!\\!/!g' | clip<cr>
+nnoremap yp :!echo $(%"d -replace '\\','/') | clip<cr>
 " yank current directory path to Windows clipboard with backward slashes
-nnoremap yP :!cygpath -w %"d | clip<cr>
+nnoremap yP :!echo $(%"d) | clip<cr>
 " yank path to current file to Windows clipboard with forward slashes
-nnoremap yf :!cygpath -w %"d\\%"c | sed -e 's!\\!/!g' | clip<cr>
+nnoremap yf :!echo $(%"d + '\' + %"c -replace '\\','/') | clip<cr>
 " yank path to current directory to Windows clipboard with backward slashes
-nnoremap yF :!cygpath -w %"d\\%"c | clip<cr>
+nnoremap yF :!echo $(%"d + '\' + %"c) | clip<cr>
 " yank current filename without path to Windows clipboard
-nnoremap yn :!cygpath -w %"c | clip<cr>
+nnoremap yn :!echo $(%"c) | clip<cr>
 " yank root of current file's name to Windows clipboard
-nnoremap yr :!cygpath -w %c:r | clip<cr>
+nnoremap yr :!echo $(%"c:r) | clip<cr>
 
 " vim: ft=vim
