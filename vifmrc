@@ -38,7 +38,7 @@ nnoremap gv :volumes<cr>
 nnoremap gh :cd $HOME<cr>
 nnoremap gd :cd $HOME/Desktop<cr>
 nnoremap gb :execute 'cd'
-            \ fnameescape(term('cat $env:USERPROFILE/.vifm/user/bookmarks.txt | fzf'))<cr>
+            \ fnameescape(term('powershell cat $env:USERPROFILE/.vifm/user/bookmarks.txt | fzf'))<cr>
 nnoremap g/ :execute 'cd'
             \ fnameescape(term('fd --type d | fzf | bash DefaultsTo .'))<cr>
 nnoremap gl :execute 'cd'
