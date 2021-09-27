@@ -1,11 +1,12 @@
-set rnu
-set syscalls
 set dotfiles
-set smartcase
-set incsearch
 set ignorecase
+set incsearch
+set rnu
 set scrolloff=4
 set shell=powershell
+set smartcase
+set syscalls
+set vicmd=nvim
 set viewcolumns=*{name}..,16{mtime},7{}.
 
 source ~/.vifm/user/env.vifm
