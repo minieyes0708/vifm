@@ -23,8 +23,6 @@ command! Q :execute '!echo %d > ~/.vifm/lastdir' | quit
 command! config :!nvr -l ~/.vifm/vifmrc
 command! bash :!cd %"d && MAIN_BASH_DONE= bash
 command! diff :!nvr -l -d %"f
-command! code :!code .
-command! sublime :!"/d/minieyes_chen/software/Sublime Text Build 3211 x64/sublime_text.exe" .<cr>
 
 nnoremap ,e :!nvr -l %"c<cr>
 nnoremap ,E :!nvr -l .<cr>
