@@ -6,18 +6,31 @@ curfile="$2"
 IFS=:
 options=(
     "md5sum"
+    "nothing"
+    "extract with 7zip"
+    "decrypt with blowfish"
+
     "git log"
     "git diff"
     "git pull"
+    "git push"
+    "git blame"
     "git commit"
     "git revert"
+    "git log on current file"
+
+    "svn log"
     "svn diff"
     "svn pull"
     "svn update"
     "svn commit"
+
     "open config file"
     "START current file"
+
     "run current file with cmd"
+    "run current file with bash"
+
     "open current file with gvim"
     "open current file with excel"
     "open current file with chrome"
@@ -42,16 +55,33 @@ if [[ "${decision}" == "md5sum" ]]; then
     shift; shift;
     md5sum $*
     read
+elif [[ "${decision}" == "nothing" ]]; then
+    echo do nothing
+elif [[ "${decision}" == "extract with 7zip" ]]; then
+    C:\\Program\ Files\\7-Zip\\7z.exe x "${curfile}" -o${curfile%.*}
+elif [[ "${decision}" == "decrypt with blowfish" ]]; then
+    echo -n 'Please input Key: '
+    read key
+    BlowFish "$key" -d "${curfile}" "${curfile}.decrypted"
 elif [[ "${decision}" == "git log" ]]; then
     TortoiseGitProc.exe -command log&
 elif [[ "${decision}" == "git diff" ]]; then
     TortoiseGitProc.exe -command diff&
 elif [[ "${decision}" == "git pull" ]]; then
     TortoiseGitProc.exe -command pull&
+elif [[ "${decision}" == "git push" ]]; then
+    TortoiseGitProc.exe -command push&
+elif [[ "${decision}" == "git blame" ]]; then
+    TortoiseGitProc.exe -command blame -path "${curfile}"&
 elif [[ "${decision}" == "git commit" ]]; then
     TortoiseGitProc.exe -command commit&
 elif [[ "${decision}" == "git revert" ]]; then
     TortoiseGitProc.exe -command revert&
+elif [[ "${decision}" == "git log on current file" ]]; then
+    TortoiseGitProc.exe -command log -path "${curfile}"&
+
+elif [[ "${decision}" == "svn log" ]]; then
+    TortoiseProc.exe -path "${curdir}" -command:log&
 elif [[ "${decision}" == "svn diff" ]]; then
     TortoiseProc.exe -path "${curdir}" -command:diff&
 elif [[ "${decision}" == "svn pull" ]]; then
@@ -60,13 +90,18 @@ elif [[ "${decision}" == "svn update" ]]; then
     TortoiseProc.exe -path "${curdir}" -command:update&
 elif [[ "${decision}" == "svn commit" ]]; then
     TortoiseProc.exe -path "${curdir}" -command:commit&
+
 elif [[ "${decision}" == "open config file" ]]; then
     cd ~/.vifm
     gvim ~/.vifm/vifmrc&
 elif [[ "${decision}" == "START current file" ]]; then
     START "" "${curfile}"
+
 elif [[ "${decision}" == "run current file with cmd" ]]; then
     START "" cmd //c "${curfile}"
+elif [[ "${decision}" == "run current file with bash" ]]; then
+    bash -c "./${curfile}"
+
 elif [[ "${decision}" == "open current file with gvim" ]]; then
     gvim "${curfile}"&
 elif [[ "${decision}" == "open current file with excel" ]]; then
