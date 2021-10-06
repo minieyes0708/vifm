@@ -50,16 +50,16 @@ nnoremap g3/ :execute 'cd'
             \ fnameescape(term('fd --type d --max-depth 3 --hidden | fzf | bash DefaultsTo .'))<cr>
 
 " yank current directory path to Windows clipboard with forward slashes
-nnoremap yp :!echo $(%"d -replace '\\','/') | clip<cr>
+nnoremap yp :!Set-Clipboard $(%"d -replace '\\','/')<cr>
 " yank current directory path to Windows clipboard with backward slashes
-nnoremap yP :!echo $(%"d) | clip<cr>
+nnoremap yP :!Set-Clipboard $(%"d)<cr>
 " yank path to current file to Windows clipboard with forward slashes
-nnoremap yf :!echo $(%"d + '\' + %"c -replace '\\','/') | clip<cr>
+nnoremap yf :!Set-Clipboard $(%"d + '\' + %"c -replace '\\','/')<cr>
 " yank path to current directory to Windows clipboard with backward slashes
-nnoremap yF :!echo $(%"d + '\' + %"c) | clip<cr>
+nnoremap yF :!Set-Clipboard $(%"d + '\' + %"c)<cr>
 " yank current filename without path to Windows clipboard
-nnoremap yn :!echo $(%"c) | clip<cr>
+nnoremap yn :!Set-Clipboard $(%"c)<cr>
 " yank root of current file's name to Windows clipboard
-nnoremap yr :!echo $(%"c:r) | clip<cr>
+nnoremap yr :!Set-Clipboard $(%"c:r)<cr>
 
 " vim: ft=vim
