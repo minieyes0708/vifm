@@ -110,7 +110,11 @@ elif [[ "${decision}" == "open current file with excel" ]]; then
         C:/Program\ Files\ \(x86\)/Microsoft\ Office/Office16/EXCEL.EXE "$(realpath $var)"&
     done
 elif [[ "${decision}" == "open current file with chrome" ]]; then
-    C:/Program\ Files/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
+    if [[ $USERNAME == "NVT02863" ]]; then
+        C:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
+    else
+        C:/Program\ Files/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
+    end
 elif [[ "${decision}" == "open current file with explorer" ]]; then
     explorer "${curfile}"
 elif [[ "${decision}" == "open current directory with 7zip" ]]; then
