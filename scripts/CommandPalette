@@ -111,7 +111,7 @@ elif [[ "${decision}" == "open current file with excel" ]]; then
     done
 elif [[ "${decision}" == "open current file with chrome" ]]; then
     if [[ $USERNAME == "NVT02863" ]]; then
-    C:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
+        C:/Program\ Files\ \(x86\)/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
     else
         C:/Program\ Files/Google/Chrome/Application/chrome.exe "$(realpath ${curfile})"
     end
