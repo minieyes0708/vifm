@@ -40,19 +40,8 @@ if $USERNAME == "NVT02863"
 else
     nnoremap gd :cd $HOME/OneDrive/桌面<cr>
 endif
-nnoremap gb :execute 'cd'
-            \ fnameescape(term('powershell cat $env:USERPROFILE/.vifm/user/bookmarks.txt | fzf'))<cr>
-nnoremap g/ :execute 'cd'
-            \ fnameescape(term('fd --type d | fzf | bash DefaultsTo .'))<cr>
-nnoremap gl :execute 'cd'
-            \ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
-nnoremap g1/ :execute 'cd'
-            \ fnameescape(term('fd --type d --max-depth 1 --hidden | fzf | bash DefaultsTo .'))<cr>
-nnoremap g2/ :execute 'cd'
-            \ fnameescape(term('fd --type d --max-depth 2 --hidden | fzf | bash DefaultsTo .'))<cr>
-nnoremap g3/ :execute 'cd'
-            \ fnameescape(term('fd --type d --max-depth 3 --hidden | fzf | bash DefaultsTo .'))<cr>
-
+" bookmarks
+nnoremap gb :execute 'cd' term('powershell Select-Bookmark)<cr>
 " yank current directory path to Windows clipboard with forward slashes
 nnoremap yp :!Set-Clipboard $(%"d -replace '\\','/')<cr>
 " yank current directory path to Windows clipboard with backward slashes
