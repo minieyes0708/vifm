@@ -41,7 +41,7 @@ else
     nnoremap gd :cd $HOME/OneDrive/桌面<cr>
 endif
 " bookmarks
-nnoremap gb :execute 'cd' term('pwsh -command Select-Bookmark')<cr>
+nnoremap gb :execute 'cd' term('pwsh -command gb')<cr>
 " yank current directory path to Windows clipboard with forward slashes
 nnoremap yp :!Set-Clipboard $(%"d -replace '\\','/')<cr>
 " yank current directory path to Windows clipboard with backward slashes
